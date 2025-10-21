@@ -30,6 +30,10 @@ const pages = [
     ),
     href: "/",
   },
+  {
+    label: <span className="text-lg">Share Problem</span>,
+    href: "/conversation",
+  },
 ];
 
 export function Header() {
