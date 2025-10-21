@@ -1,6 +1,6 @@
 import { Conversation } from "@/components/conversation";
 import { Metadata } from "next";
-import { title, description, url } from "@/lib/metadata";
+import { title, url } from "@/lib/metadata";
 
 export const dynamic = "force-dynamic";
 

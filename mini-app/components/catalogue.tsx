@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { fetchDiscovery } from "@/lib/api";
 
 interface MiniAppInfo {
@@ -21,8 +22,10 @@ export function Catalogue() {
       try {
         const data = await fetchDiscovery();
         setApps(data.apps ?? []);
-      } catch (err: any) {
-        setError(err.message ?? "Unknown error");
+      } catch (err: unknown) {
+        const message =
+          err instanceof Error ? err.message : "Unknown error";
+        setError(message);
       } finally {
         setLoading(false);
       }
@@ -49,9 +52,11 @@ export function Catalogue() {
           key={app.id}
           className="border rounded-md p-4 flex flex-col gap-2 hover:shadow-md transition-shadow"
         >
-          <img
+          <Image
             src={app.iconUrl}
             alt={`${app.title} icon`}
+            width={48}
+            height={48}
             className="w-12 h-12 self-center"
           />
           <h3 className="font-semibold text-lg">{app.title}</h3>
